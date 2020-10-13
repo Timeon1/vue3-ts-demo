@@ -2,15 +2,17 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <div class="nav-list">
-      <div v-for="( item,index ) in navList" :key="index" class="nav-item" >{{item.name}}</div>
+      <div v-for="( item,index ) in navList" :key="index" class="nav-item" @click="toDetail">{{item.name}}</div>
 
     </div>
+    <div>{{count}}</div>
+    <button @click="plus">加</button>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import {ref} from 'vue'
+import {useRouter} from 'vue-router'
 
 @Options({
   components: {
@@ -21,9 +23,17 @@ export default class Home extends Vue {
     return {
       navList: [
         {name: 'WeChat朋友圈',path: '/message'}
-      ]
+      ],
+      count: 1
     }
   }
+  toDetail(){
+    this.$router.push('/message')
+  }
+  plus(){
+    return 1
+  }
+  
 }
 </script>
 <style lang="scss" scoped>
