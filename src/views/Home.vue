@@ -1,18 +1,39 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <div class="nav-list">
+      <div v-for="( item,index ) in navList" :key="index" class="nav-item" >{{item.name}}</div>
+
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import {ref} from 'vue'
 
 @Options({
   components: {
-    HelloWorld,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  data(){
+    return {
+      navList: [
+        {name: 'WeChat朋友圈',path: '/message'}
+      ]
+    }
+  }
+}
 </script>
+<style lang="scss" scoped>
+.home {
+  height: 100vh;
+}
+.nav-item {
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  border-bottom: 1px solid #ccc;
+}
+</style>
