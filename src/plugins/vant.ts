@@ -1,11 +1,19 @@
 // 引入vue
 import {App as VM} from 'vue'
 import {
-  Button
+  Button,
+  Cell, 
+  CellGroup,
+  Image as VanImage,
+  Icon
 } from 'vant'
 
 const plugins = [
-  Button
+  Button,
+  Cell, 
+  CellGroup,
+  VanImage,
+  Icon
 ]
 
 export const vantPlugins = {

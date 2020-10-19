@@ -1,12 +1,13 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <div class="nav-list">
-      <div v-for="( item,index ) in navList" :key="index" class="nav-item" @click="toDetail">{{item.name}}</div>
-
-    </div>
+    <van-cell-group class="nav-list">
+      <!-- <div v-for="( item,index ) in navList" :key="index" class="nav-item" @click="toDetail">{{item.name}}</div> -->
+      <van-cell v-for="( item,index ) in navList" :key="index" :title="item.name" :value="内容" :label="item.desc" border="true" clickable is-link  @click="toDetail" />
+    </van-cell-group>
+      
+    <van-button type="primary" @click="plus()">加</van-button>
     <div>{{count}}</div>
-    <button @click="plus">加</button>
   </div>
 </template>
 
@@ -22,7 +23,7 @@ export default class Home extends Vue {
   data(){
     return {
       navList: [
-        {name: 'WeChat朋友圈',path: '/message'}
+        {name: 'WeChat朋友圈',path: '/message',desc: '微信朋友圈'}
       ],
       count: 1
     }
@@ -31,7 +32,7 @@ export default class Home extends Vue {
     this.$router.push('/message')
   }
   plus(){
-    return 1
+    return  1
   }
   
 }
