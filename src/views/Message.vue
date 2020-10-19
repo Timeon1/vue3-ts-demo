@@ -12,9 +12,16 @@
       />
 
       <van-icon class="icon-left" size="20px" name="arrow-left" color="#fff" />
-      <van-icon class="icon-right" size="20px" name="upgrade" color="#fff" />
+      <van-icon class="icon-right" size="20px" name="photograph" color="#fff" />
     </div>
-
+    <van-list
+      v-model:loading="state.loading"
+      :finished="state.finished"
+      finished-text="没有更多了"
+      @load="onLoad"
+    >
+      <van-cell v-for="item in state.list" :key="item" :title="item" />
+    </van-list>
   </div>
 </template>
 
@@ -23,18 +30,31 @@ import { defineComponent,reactive,toRefs } from 'vue'
 export default defineComponent({
   setup() {
     const state:{
-      count: number
+      count: number,
+      list: [],
+      loading:boolean,
+      finished: boolean
     }= reactive ({
-      count: 0
+      count: 0,
+      list: [],
+      loading:false,
+      finished: false
     })
 
     const plus = ()=>{
       state.count++
       
     }
+    const onLoad = ()=>{
+      state.loading = false;
+      state.finished = true;
+    }
+
+
     return {
-      ...toRefs(state),
-      plus
+      state,
+      plus,
+      onLoad
     }
   },
 
@@ -46,6 +66,7 @@ export default defineComponent({
 .header {
   width: 100%;
   position: relative;
+  padding-bottom: 40px;
   .img {
     width: 100%;
   }
