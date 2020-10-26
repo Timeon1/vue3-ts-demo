@@ -20,7 +20,11 @@
       finished-text="没有更多了"
       @load="onLoad"
     >
-      <van-cell v-for="item in state.list" :key="item" :title="item" />
+      <div v-for="(item,index) in state.list" :key="index" class="message-item">
+        {{item.name}}
+      </div>
+
+
     </van-list>
   </div>
 </template>
@@ -31,12 +35,19 @@ export default defineComponent({
   setup() {
     const state:{
       count: number,
-      list: [],
+      list: [
+        {content: '今天和几哈撒地方a开始减肥卡甲方',createTime: '1616987488726' , updateTime: '1616987488726', name: '萨阿迪王', userId: '123', files: []},
+        {content: '今天和几哈撒阿萨德地方开始减肥卡甲方', createTime: '1616981488726' , updateTime: '1616987481726', name: '万绮雯的', userId: '456', files: []},
+
+      ],
       loading:boolean,
       finished: boolean
     }= reactive ({
       count: 0,
-      list: [],
+      list: [
+        {content: '今天和几哈撒地方a开始减肥卡甲方',createTime: '1616987488726' , updateTime: '1616987488726', name: '萨阿迪王', userId: '123', files: []},
+        {content: '今天和几哈撒阿萨德地方开始减肥卡甲方', createTime: '1616981488726' , updateTime: '1616987481726', name: '万绮雯的', userId: '456', files: []},
+      ],
       loading:false,
       finished: false
     })
@@ -82,6 +93,14 @@ export default defineComponent({
   }
 
 }
+
+.message-item {
+  
+
+
+}
+
+
 </style>
 
 
