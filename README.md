@@ -6,6 +6,10 @@
 vue create vue3-ts-demo //选择Vue3.0 空格选择 enter确认
 
 vue add typescript
+
+//启动
+npm i
+npm run serve
 ```
 
 ### data
