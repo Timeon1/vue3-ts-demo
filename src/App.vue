@@ -32,4 +32,31 @@ body {
     }
   }
 }
+.identicon {
+  padding: 5px;
+  background: #eee;
+  display: inline-block;
+  div {
+    float: left;
+    width: 6px;
+    height: 6px;
+    background: #eee;
+    float: left;
+  }
+}
+.identicon:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+
+.identicon div:nth-child(5n + 1) {
+  clear: both;
+}
+.identicon div[data="1"] {
+  background: red;
+}
+.identicon div[data="0"] {
+  background: #eee !important;
+}
 </style>

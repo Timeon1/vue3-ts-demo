@@ -5,7 +5,8 @@ import {
   Cell, 
   CellGroup,
   Image as VanImage,
-  Icon
+  Icon,
+  List
 } from 'vant'
 
 const plugins = [
@@ -13,7 +14,8 @@ const plugins = [
   Cell, 
   CellGroup,
   VanImage,
-  Icon
+  Icon,
+  List
 ]
 
 export const vantPlugins = {
