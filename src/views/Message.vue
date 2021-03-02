@@ -74,10 +74,26 @@ export default defineComponent({
       console.log(state.list.values)
       
     }
+    const list = [
+      {content: '今天和几哈撒地方a开始减肥卡甲方,啊萨达萨达静安寺,啥的骄傲开始发了221大丰收',createTime: '1616987488726' , updateTime: '1616987488726', name: '萨阿迪王', userId: '3b212316fd'},
+      {content: '今天和几哈撒地方a开始减肥卡甲方今天和几哈撒阿萨德地方开始减肥卡甲方asdas啊萨达萨达',createTime: '1616987488726' , updateTime: '1616987488726', name: '迪王', userId: '3b212316qwefd'},
+      {content: '今天和几哈撒地方a开始减肥卡甲方',createTime: '1616987488726' , updateTime: '1616987488726', name: '阿迪ads 王', userId: '3b212378'},
+      {content: '今天和几哈撒地方a开始减肥卡甲方',createTime: '1616987488726' , updateTime: '1616987488726', name: '阿asdqwr迪王', userId: '3b21231452asdq'},
+      {content: '今天和几哈撒阿萨德地方开始减肥卡甲方asdas啊萨达萨达, ,啊萨达萨达很快就阿萨德看阿萨德后就开始', createTime: '1616981488726' , updateTime: '1616987481726', name: '万绮雯的', userId: '456'},
+    ]
     const onLoad = ()=>{
-      state.loading = false;
-      state.finished = true;
-      // console.log(setAvatar('754564654asa'))
+      
+      
+      try {
+        state.loading = false;
+        
+        if(state.list.length > 20) {
+          state.finished = true;
+        }
+        state.list.push(...list)
+      } catch (error) {
+        state.finished = true;
+      }
     }
     const setAvatar = (id:string)=>{
       console.log('setAvatar', state.list)
@@ -85,14 +101,9 @@ export default defineComponent({
       dom && getRandomAvatar(dom)
       console.log('dom', dom, id)
     }
+
     const getMessages = () => {
-      const list = [
-          {content: '今天和几哈撒地方a开始减肥卡甲方,啊萨达萨达静安寺,啥的骄傲开始发了221大丰收',createTime: '1616987488726' , updateTime: '1616987488726', name: '萨阿迪王', userId: '3b212316fd'},
-          {content: '今天和几哈撒地方a开始减肥卡甲方今天和几哈撒阿萨德地方开始减肥卡甲方asdas啊萨达萨达',createTime: '1616987488726' , updateTime: '1616987488726', name: '迪王', userId: '3b212316qwefd'},
-          {content: '今天和几哈撒地方a开始减肥卡甲方',createTime: '1616987488726' , updateTime: '1616987488726', name: '阿迪ads 王', userId: '3b212378'},
-          {content: '今天和几哈撒地方a开始减肥卡甲方',createTime: '1616987488726' , updateTime: '1616987488726', name: '阿asdqwr迪王', userId: '3b21231452asdq'},
-          {content: '今天和几哈撒阿萨德地方开始减肥卡甲方asdas啊萨达萨达, ,啊萨达萨达很快就阿萨德看阿萨德后就开始', createTime: '1616981488726' , updateTime: '1616987481726', name: '万绮雯的', userId: '456'},
-        ]
+      
         state.list = list
         console.log('getMessage', state.list)
     }
@@ -102,6 +113,7 @@ export default defineComponent({
     });
     return {
       state,
+      ...toRefs(state.list),
       plus,
       onLoad,
       setAvatar,
@@ -137,6 +149,7 @@ export default defineComponent({
   min-height: 60px;
   display: flex;
   padding: 10px 16px;
+  border-bottom: 1px solid #ccc;
   .left {
     
   }
