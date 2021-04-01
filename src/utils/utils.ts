@@ -24,5 +24,5 @@ export const getRandomAvatar = (identicon: HTMLElement)=>{
       identicon.appendChild(el);
     });
   });
-  console.log(identicon)
+  console.log('identicon',identicon)
 }

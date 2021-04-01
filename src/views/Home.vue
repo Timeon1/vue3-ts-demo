@@ -3,7 +3,7 @@
     <img alt="Vue logo" src="../assets/logo.png" />
     <van-cell-group class="nav-list">
       <!-- <div v-for="( item,index ) in navList" :key="index" class="nav-item" @click="toDetail">{{item.name}}</div> -->
-      <van-cell v-for="( item,index ) in navList" :key="index" :title="item.name" :value="内容" :label="item.desc" border="true" clickable is-link  @click="toDetail" />
+      <van-cell v-for="( item,index ) in navList" :key="index" :title="item.name" :value="内容" :label="item.desc" border="true" clickable is-link :path="item.path" @click="toDetail($event, item.path)" />
     </van-cell-group>
       
     <van-button type="primary" @click="plus()">加</van-button>
@@ -23,13 +23,14 @@ export default class Home extends Vue {
   data(){
     return {
       navList: [
-        {name: 'WeChat朋友圈',path: '/message',desc: '微信朋友圈'}
+        {name: 'WeChat朋友圈',path: '/message',desc: '微信朋友圈'},
+        {name: '上传',path: '/form',desc: '上传'},
       ],
       count: 1
     }
   }
-  toDetail(){
-    this.$router.push('/message')
+  toDetail(e:any, path:string){
+    this.$router.push(path)
   }
   plus(){
     return  1

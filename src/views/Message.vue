@@ -38,7 +38,7 @@
         </div>
         
         <div class="right">
-          <div class="username">{{item.name}}</div>
+          <div class="username">{{item.name + item.userId}}</div>
           <div class="message-item-content">{{item.content}}</div>
 
         </div>
@@ -82,7 +82,7 @@ export default defineComponent({
       {content: '今天和几哈撒阿萨德地方开始减肥卡甲方asdas啊萨达萨达, ,啊萨达萨达很快就阿萨德看阿萨德后就开始', createTime: '1616981488726' , updateTime: '1616987481726', name: '万绮雯的', userId: '456'},
     ]
     const onLoad = ()=>{
-      
+      console.log('onload')
       
       try {
         state.loading = false;
@@ -90,7 +90,11 @@ export default defineComponent({
         if(state.list.length > 20) {
           state.finished = true;
         }
-        state.list.push(...list)
+        let newArr = list
+        newArr.map(item=>{
+          return item.userId = Math.floor(Math.random()*100000) + ''
+        })
+        state.list.push(...newArr)
       } catch (error) {
         state.finished = true;
       }
@@ -108,7 +112,7 @@ export default defineComponent({
         console.log('getMessage', state.list)
     }
     onMounted(() => {
-      getMessages();
+      // getMessages();
       console.log('monted')
     });
     return {
